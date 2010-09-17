@@ -358,15 +358,17 @@ def startGui(scm, xd_dir, cmdline, env, display_cmdline):
       self.initContents()
 
     def initFonts(self):
-      self.fixed_font = Font(family='courier')
-      self.fixed_bold_font = Font(family='courier', weight=BOLD)
+      size = Label(self)['font'].split()[1]
+      self.command_font = Font(family='courier', size=size, weight=BOLD)
+      self.fixed_font = Font(family='courier', size=size)
+      self.fixed_bold_font = Font(family='courier', size=size, weight=BOLD)
 
     def initWidgets(self):
 
       def initCommandFrame(parent):
         f = Frame(parent)
         l = Label(f, text='Command: ')
-        e = Entry(f, font=self.fixed_bold_font, state=READONLY,
+        e = Entry(f, font=self.command_font, state=READONLY,
                   textvariable=StringVar(value=display_cmdline))
         b = Button(f, text='Rerun', command=self.reRunCommand)
 
@@ -437,7 +439,7 @@ def startGui(scm, xd_dir, cmdline, env, display_cmdline):
           f = Frame(parent)
           r = Radiobutton(f, variable=iv, value=len(rs))
           sv = StringVar()
-          e = Entry(f, font=self.fixed_bold_font, bg='white', state=READONLY,
+          e = Entry(f, font=self.command_font, bg='white', state=READONLY,
                     textvariable=sv)
           e.bind('<FocusIn>',
                  lambda _: iv.get() != len(rs) and iv.set(len(rs)))
