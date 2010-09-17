@@ -414,8 +414,7 @@ def startGui(scm, xd_dir, cmdline, env, display_cmdline):
           t.tag_config('hunk', foreground='blue')
           t.tag_config('add', foreground='forestgreen')
           t.tag_config('del', foreground='red')
-          s = Scrollbar(f, orient=VERTICAL, takefocus=False,
-                        command=t.yview)
+          s = Scrollbar(f, orient=VERTICAL, takefocus=False, command=t.yview)
           t.config(yscrollcommand=s.set)
           t.bind('<Key>', lambda e: e.char and 'break')
           t.bind('<Return>', lambda e: self.launchDiffTool(e) or 'break')
