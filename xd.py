@@ -327,14 +327,14 @@ def initDiffTool():
           shell=True)
 
   DiffTool('tkdiff -L $l1 -L $l2 -- $f1 $f2')
+  DiffTool('xxdiff --title1 $l1 --title2 $l2 -- $f1 $f2')
   DiffTool('gvimdiff -- $f1 $f2')
   DiffTool('emacs --eval \'(ediff "$f1" "$f2")\'', 'emacs(ediff)')
   DiffTool('xemacs --eval \'(ediff "$f1" "$f2")\'', 'xemacs(ediff)')
-  DiffTool('kompare -- $f1 $f2')
   DiffTool('meld -L $l1 -L $l2 -- $f1 $f2')
   DiffTool('diffuse $f1 $f2')
+  DiffTool('kompare -- $f1 $f2')
   DiffTool('kdiff3 -L1 $l1 -L2 $l2 -- $f1 $f2')
-  DiffTool('xxdiff --title1 $l1 --title2 $l2 -- $f1 $f2')
 
   return DiffTool
 
@@ -408,8 +408,7 @@ def startGui(scm, xd_dir, cmdline, env, display_cmdline):
 
         def initPreviewFrame(parent):
           f = Frame(parent)
-          t = Text(f, name='text', width=81, height=48, bg='white',
-                   font=self.fixed_font)
+          t = Text(f, name='text', width=81, bg='white', font=self.fixed_font)
           t.tag_config('meta', background='darkgrey', font=self.fixed_bold_font)
           t.tag_config('hunk', foreground='blue')
           t.tag_config('add', foreground='forestgreen')
