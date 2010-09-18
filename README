@@ -1,0 +1,52 @@
+xd is a GUI wrapper for git/svn diff, it is not a diff tool itself.
+
+Usage:
+
+    xd [diff] [any arguments or options acceptable to git or svn]
+
+  Everytime you want to run 'git diff' or 'svn diff', you can run 'xd diff'
+  instead, xd would display a list of the files as well as a preview window,
+  you can double click on the file to launch any external diff tool of your
+  choice.
+
+  On command line, 'diff' is optional, running 'xd diff' is equivalent to
+  running 'xd'.
+
+  For git, you can also run 'xd show' which is equivalent to 'git show'.
+
+Requirement:
+
+  The current directory must be managed by git or svn where xd is started.
+
+Install:
+
+  xd requires python >= 2.4 and tk >= 8.4, run 'python -m Tkinter' to verify
+  if you have all required components installed.
+
+  If not, you can do:
+
+   sudo yum install tkinter # for rpm based systems
+
+  Or:
+
+   sudo apt-get install python-tk # for deb based systems
+
+  You can install xd anywhere you see fit, somewhere in your PATH would be
+  good.
+
+Diff Tool:
+
+  xd supports tkdiff, xxdiff, gvimdiff, emacs(ediff), xemacs(ediff), meld,
+  diffuse, kompare and kdiff3. They need to be in your PATH.
+
+  You can also start any custom diff tool you like.
+
+How it works:
+
+  xd uses the external diff mode for git/svn to get the files to diff.
+
+Extending:
+
+  xd is a simple python script so it is very easy to add support for other SCM
+  systems and diff tools.
+
