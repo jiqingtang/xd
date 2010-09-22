@@ -452,7 +452,7 @@ def startGui(scm, xd_dir, cmdline, env, display_cmdline):
           return f
 
         lf = LabelFrame(parent, labelanchor=NW,
-                        text='Diff Tool (double click on file to launch)')
+                        text='Diff Tool (double click to launch)')
         iv = IntVar()
         rs = [Radiobutton(lf, text=tool.name, variable=iv, value=i,
                           state=tool.isInstalled() and NORMAL or DISABLED)
@@ -460,6 +460,9 @@ def startGui(scm, xd_dir, cmdline, env, display_cmdline):
         cf = initCustomFrame(lf)
         self.bind_class('Radiobutton', '<Button-1>',
                         lambda e: e.widget.focus(),
+                        add=True)
+        self.bind_class('Radiobutton', '<Double-Button-1>',
+                        self.launchDiffTool,
                         add=True)
         self.bind_class('Radiobutton', '<Return>',
                         self.launchDiffTool,
