@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 
+# Author: Jiqing Tang
+
 import cPickle
 import os
 import shutil
