@@ -360,7 +360,10 @@ def startGui(scm, xd_dir, cmdline, env, display_cmdline):
       self.initContents()
 
     def initFonts(self):
-      size = Label(self)['font'].split()[1]
+      try:
+        size = Label(self)['font'].split()[1]
+      except IndexError:
+        size = 0
       self.command_font = Font(family='courier', size=size, weight=BOLD)
       self.fixed_font = Font(family='courier', size=size)
       self.fixed_bold_font = Font(family='courier', size=size, weight=BOLD)
