@@ -92,11 +92,14 @@ def abbrPath(path):
   return shortest[0]
 
 def isText(lines):
-  null_trans = string.maketrans('', '')
+  total = 0
+  binary = 0
   for line in lines:
-    if line.translate(null_trans, string.printable):
+    total += len(line)
+    binary += len(line.translate(None, string.printable))
+    if total >= 1024 and binary * 100 >= total:
       return False
-  return True
+  return total == 0 or binary * 100 < total
 
 #------------------------------ scm ------------------------------
 
